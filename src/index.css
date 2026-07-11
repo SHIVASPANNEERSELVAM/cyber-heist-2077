@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #0a0a0f;
+    color: #e0e0ff;
+    font-family: 'Rajdhani', sans-serif;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0d0d1a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #00f0ff44;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00f0ff88;
+  }
+
+  ::selection {
+    background: rgba(0, 240, 255, 0.3);
+    color: #00f0ff;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-cyber-dark bg-opacity-60 backdrop-blur-md border border-cyber-cyan border-opacity-20 rounded-lg;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37), inset 0 0 30px rgba(0, 240, 255, 0.02);
+  }
+
+  .glass-panel-magenta {
+    @apply bg-cyber-dark bg-opacity-60 backdrop-blur-md border border-cyber-magenta border-opacity-20 rounded-lg;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37), inset 0 0 30px rgba(255, 0, 170, 0.02);
+  }
+
+  .neon-text-cyan {
+    color: #00f0ff;
+    text-shadow: 0 0 7px #00f0ff, 0 0 10px #00f0ff, 0 0 21px #00f0ff;
+  }
+
+  .neon-text-magenta {
+    color: #ff00aa;
+    text-shadow: 0 0 7px #ff00aa, 0 0 10px #ff00aa, 0 0 21px #ff00aa;
+  }
+
+  .neon-text-green {
+    color: #00ff66;
+    text-shadow: 0 0 7px #00ff66, 0 0 10px #00ff66, 0 0 21px #00ff66;
+  }
+
+  .neon-text-red {
+    color: #ff3344;
+    text-shadow: 0 0 7px #ff3344, 0 0 10px #ff3344, 0 0 21px #ff3344;
+  }
+
+  .cyber-button {
+    @apply relative font-cyber font-bold uppercase tracking-widest px-8 py-3 
+           border border-cyber-cyan text-cyber-cyan bg-transparent
+           transition-all duration-300 cursor-pointer overflow-hidden;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+
+  .cyber-button:hover {
+    @apply bg-cyber-cyan bg-opacity-10 shadow-neon-cyan;
+    text-shadow: 0 0 10px #00f0ff;
+  }
+
+  .cyber-button:active {
+    @apply bg-cyber-cyan bg-opacity-20;
+    transform: scale(0.97);
+  }
+
+  .cyber-button::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-full;
+    background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+
+  .cyber-button:hover::before {
+    transform: translateX(100%);
+  }
+
+  .cyber-button-magenta {
+    @apply cyber-button border-cyber-magenta text-cyber-magenta;
+  }
+
+  .cyber-button-magenta:hover {
+    @apply bg-cyber-magenta bg-opacity-10 shadow-neon-magenta;
+    text-shadow: 0 0 10px #ff00aa;
+  }
+
+  .scanline-overlay {
+    @apply pointer-events-none fixed inset-0 z-50;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.05) 2px,
+      rgba(0, 0, 0, 0.05) 4px
+    );
+  }
+
+  .cyber-divider {
+    @apply h-px w-full;
+    background: linear-gradient(90deg, transparent, #00f0ff44, #00f0ff, #00f0ff44, transparent);
+  }
+
+  .progress-bar {
+    @apply h-2 rounded-full overflow-hidden bg-cyber-dark;
+  }
+
+  .progress-bar-fill {
+    @apply h-full rounded-full transition-all duration-300;
+    background: linear-gradient(90deg, #00f0ff, #00ff66);
+    box-shadow: 0 0 10px #00f0ff88;
+  }
+
+  .progress-bar-fill-health {
+    background: linear-gradient(90deg, #ff3344, #ff8800);
+    box-shadow: 0 0 10px #ff334488;
+  }
+
+  .progress-bar-fill-energy {
+    background: linear-gradient(90deg, #00f0ff, #aa44ff);
+    box-shadow: 0 0 10px #00f0ff88;
+  }
+}
+
+@layer utilities {
+  .text-glow-cyan {
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+  }
+
+  .text-glow-magenta {
+    text-shadow: 0 0 10px rgba(255, 0, 170, 0.5);
+  }
+
+  .border-glow-cyan {
+    box-shadow: 0 0 5px #00f0ff33, inset 0 0 5px #00f0ff11;
+  }
+}
