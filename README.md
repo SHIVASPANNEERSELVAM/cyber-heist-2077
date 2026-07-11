@@ -1,6 +1,6 @@
 # Cyber Heist 2077
 
-A production-ready, browser-playable stealth action game built for the AI Game Jam. Infiltrate futuristic facilities, hack security systems, steal AI cores, avoid guards, and escape before lockdown!
+A production-ready, browser-playable stealth action game. Infiltrate futuristic facilities, hack security systems, steal AI cores, avoid guards, and escape before lockdown!
 
 ## How to Play
 
@@ -28,12 +28,6 @@ Navigate through 5 handcrafted levels. Avoid security cameras, laser tripwires, 
 * **React UI HUD**: Complex glassmorphic React components layered over the Phaser canvas for menus, settings, upgrades, and hacking minigames.
 * **Hacking Minigames**: 3 unique interactive React-based puzzle minigames (Node Connection, Memory Sequence, Pattern Match) integrated directly into the gameplay loop.
 
-### Which AI tools were used?
-* **Antigravity IDE**: Used as the primary agentic coding assistant to scaffold the React/Phaser architecture, generate the procedural Web Audio API synthesizer, design the levels, write the enemy AI logic, and debug browser-specific scaling and input issues.
-* **Gemini**: Powered the underlying reasoning and coding capabilities.
-
-### AI Agent Traces
-A zip file (`ai_agent_traces.zip`) containing the full unedited conversation transcripts, tool outputs, and agent planning logs from Antigravity IDE is included in the root of this repository.
 
 ### Credits & Prior Work
 * **Engine**: [Phaser 3](https://phaser.io/) for physics, rendering, and game loop.
