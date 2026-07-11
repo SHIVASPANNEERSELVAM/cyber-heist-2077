@@ -157,7 +157,7 @@ export function MainMenu({ onStartGame, onMissionSelect, onUpgrades, onSettings,
 
       {/* Controls hint */}
       <motion.div
-        className="absolute bottom-6 left-8 font-mono text-xs text-cyber-white-dim opacity-40"
+        className="absolute bottom-6 left-8 font-mono text-xs text-cyber-white-dim opacity-40 hidden md:block"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.4 }}
         transition={{ delay: 1.5 }}
