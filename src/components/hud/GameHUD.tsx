@@ -7,6 +7,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import eventBus from '../../game/EventBus';
 import { MissionObjective, InventoryItem } from '../../types';
+import { MobileControls } from './MobileControls';
 
 export function GameHUD() {
   const [health, setHealth] = useState(100);
@@ -177,7 +178,7 @@ export function GameHUD() {
       </div>
 
       {/* Bottom Left — Controls reminder */}
-      <div className="absolute bottom-4 left-4">
+      <div className="absolute bottom-4 left-4 hidden md:block">
         <div className="flex gap-3">
           {[
             { key: 'E', label: 'INTERACT' },
@@ -222,9 +223,11 @@ export function GameHUD() {
       </div>
 
       {/* Bottom Right — FPS */}
-      <div className="absolute bottom-4 right-4">
+      <div className="absolute bottom-4 right-4 hidden md:block">
         <span className="font-mono text-[10px] text-cyber-white-dim opacity-50">{fps} FPS</span>
       </div>
+
+      <MobileControls />
     </div>
   );
 }

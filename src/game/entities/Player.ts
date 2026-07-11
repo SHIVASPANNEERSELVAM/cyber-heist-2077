@@ -44,6 +44,10 @@ export class Player {
   private currentStealthDrain: number;
   private currentEnergyRegen: number;
 
+  private joystickInput = { x: 0, y: 0 };
+  private boundJoystickMove!: (data: { x: number; y: number }) => void;
+  private boundPlayerAction!: (action: string) => void;
+
   constructor(scene: Phaser.Scene, x: number, y: number, upgrades?: PlayerUpgrades) {
     this.scene = scene;
     
@@ -125,6 +129,21 @@ export class Player {
       eventBus.emit('ui:pauseGame');
       eventBus.emit('game:screenChanged', { screen: 'paused' });
     });
+
+    // EventBus bindings for mobile controls
+    this.boundJoystickMove = (data: { x: number; y: number }) => {
+      this.joystickInput.x = data.x;
+      this.joystickInput.y = data.y;
+    };
+    this.boundPlayerAction = (action: string) => {
+      if (this.isDead) return;
+      if (action === 'dash' && this.canDash) this.startDash();
+      if (action === 'stealth') this.toggleStealth();
+      if (action === 'interact') this.interact();
+    };
+
+    eventBus.on('joystick:move' as any, this.boundJoystickMove);
+    eventBus.on('player:action' as any, this.boundPlayerAction);
   }
 
   update(delta: number): void {
@@ -203,11 +222,17 @@ export class Player {
     if (this.cursors.up.isDown || this.wasd.W.isDown) inputY = -1;
     if (this.cursors.down.isDown || this.wasd.S.isDown) inputY = 1;
 
-    // Normalize diagonal
-    if (inputX !== 0 && inputY !== 0) {
-      const norm = 1 / Math.SQRT2;
-      inputX *= norm;
-      inputY *= norm;
+    // Apply joystick if keyboard is idle
+    if (inputX === 0 && inputY === 0) {
+      inputX = this.joystickInput.x;
+      inputY = this.joystickInput.y;
+    } else {
+      // Normalize diagonal keyboard input
+      if (inputX !== 0 && inputY !== 0) {
+        const norm = 1 / Math.SQRT2;
+        inputX *= norm;
+        inputY *= norm;
+      }
     }
 
     // Apply acceleration/deceleration
@@ -375,6 +400,8 @@ export class Player {
   }
 
   public destroy(): void {
+    eventBus.off('joystick:move' as any, this.boundJoystickMove);
+    eventBus.off('player:action' as any, this.boundPlayerAction);
     this.sprite.destroy();
     this.directionIndicator?.destroy();
     this.glowGraphics.destroy();

@@ -55,6 +55,9 @@ export class GameScene extends Phaser.Scene {
     this.children.removeAll(true);
     this.enemyEntities.forEach(e => e.destroy());
     this.enemyEntities = [];
+    if (this.player) {
+      this.player.destroy();
+    }
     this.activeTerminal = null;
     this.hasKeycard = false;
     this.collectedObjectives = 0;

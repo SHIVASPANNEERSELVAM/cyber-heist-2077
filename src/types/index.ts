@@ -254,4 +254,6 @@ export interface GameEvents {
   'ui:hackingResult': { success: boolean };
   'ui:settingsChanged': GameSettings;
   'ui:useItem': { itemId: string };
+  'joystick:move': { x: number; y: number };
+  'player:action': string;
 }
