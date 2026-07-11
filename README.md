@@ -5,7 +5,7 @@ A production-ready, browser-playable stealth action game built for the AI Game J
 ## How to Play
 
 ### Deployed Game URL
-👉 **[Insert Vercel/Netlify URL Here]**
+👉 cyber-heist-2077.vercel.app
 
 ### Controls
 * **W, A, S, D** or **Arrow Keys**: Move
