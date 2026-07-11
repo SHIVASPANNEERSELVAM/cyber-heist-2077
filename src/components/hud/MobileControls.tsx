@@ -70,8 +70,21 @@ export const MobileControls: React.FC = () => {
   return (
     <div className="absolute inset-0 pointer-events-none z-50 overflow-hidden">
       
+      {/* Pause Button */}
+      <div className="absolute top-4 right-4 pointer-events-auto touch-none">
+        <button
+          onPointerDown={() => {
+            eventBus.emit('ui:pauseGame');
+            eventBus.emit('game:screenChanged', { screen: 'paused' });
+          }}
+          className="w-10 h-10 rounded-lg bg-black/50 border border-cyan-400 text-cyan-200 font-mono font-bold text-xs flex items-center justify-center shadow-[0_0_10px_rgba(0,240,255,0.3)] active:bg-cyan-500/30 active:scale-95 transition-all backdrop-blur-sm"
+        >
+          ||
+        </button>
+      </div>
+
       {/* Joystick Area */}
-      <div className="absolute bottom-10 left-10 w-40 h-40 pointer-events-auto touch-none"
+      <div className="absolute bottom-4 left-4 w-32 h-32 pointer-events-auto touch-none"
            onPointerDown={handlePointerDown}
            onPointerMove={handlePointerMove}
            onPointerUp={handlePointerUp}
@@ -87,8 +100,8 @@ export const MobileControls: React.FC = () => {
       </div>
 
       {/* Action Buttons */}
-      <div className="absolute bottom-10 right-10 flex flex-col items-end gap-4 pointer-events-auto touch-none">
-        <div className="flex gap-4 mr-10">
+      <div className="absolute bottom-4 right-4 flex flex-col items-end gap-3 pointer-events-auto touch-none">
+        <div className="flex gap-3 mr-4">
           {/* Stealth Button */}
           <button 
             onPointerDown={handleAction('stealth')}

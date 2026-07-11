@@ -88,7 +88,7 @@ export function GameHUD() {
   return (
     <div className="absolute inset-0 z-40 pointer-events-none">
       {/* Top Left — Health & Energy */}
-      <div className="absolute top-4 left-4 w-56">
+      <div className="absolute top-4 left-4 w-40 md:w-56">
         {/* Health bar */}
         <div className="mb-2">
           <div className="flex justify-between items-center mb-1">
@@ -139,7 +139,7 @@ export function GameHUD() {
       </div>
 
       {/* Top Center — Timer */}
-      <div className="absolute top-4 left-1/2 -translate-x-1/2">
+      <div className="absolute top-16 md:top-4 left-1/2 -translate-x-1/2">
         <motion.div
           className={`glass-panel px-6 py-2 text-center ${isTimeCritical ? 'border-cyber-red' : ''}`}
           animate={isTimeCritical ? {
@@ -155,7 +155,7 @@ export function GameHUD() {
       </div>
 
       {/* Top Right — Objectives */}
-      <div className="absolute top-4 right-4 w-64">
+      <div className="absolute top-24 md:top-4 right-2 md:right-4 w-48 md:w-64">
         <div className="glass-panel p-3">
           <h3 className="font-cyber text-xs text-cyber-cyan tracking-wider mb-2 flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-cyber-cyan rounded-full" />
