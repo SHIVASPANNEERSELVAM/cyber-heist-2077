@@ -17,6 +17,8 @@ export const createGameConfig = (parent: HTMLElement): Phaser.Types.Core.GameCon
   backgroundColor: '#0a0a0f',
   pixelArt: false,
   antialias: true,
+  // @ts-ignore
+  resolution: window.devicePixelRatio || 1,
   scale: {
     mode: Phaser.Scale.RESIZE,
     autoCenter: Phaser.Scale.CENTER_BOTH,
